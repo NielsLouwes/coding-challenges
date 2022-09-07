@@ -9,12 +9,16 @@ describe('arrayRemove function', () => {
       expect(arrayRemove(null)).toEqual(0);
     })
 
-    test('should also remove duplicate max and min values from array', () => {
-      expect(arrayRemove([1,1,1,4,5,6,7,7])).toEqual(15);
+    test('should not remove duplicate max and min values from array', () => {
+      expect(arrayRemove([1,1,1,4,5,6,7,7])).toEqual(24);
     })
 
     test('should also remove min negative values', () => {
-      expect(arrayRemove([-1,-1,1,4,5,6,7,7])).toEqual(16);
+      expect(arrayRemove([-1,-1,1,4,5,6,7,7])).toEqual(22);
+    })
+
+    test('should return zero if there is only one value in array', () => {
+      expect(arrayRemove([1])).toEqual(0);
     })
   });
 

@@ -1,5 +1,6 @@
 const checkSubstringIncluded = require("./code")
 
+describe("checkSubstringIncluded function" , () => {
 test('testing to see if it returns the correct substrings', () => {
   expect(checkSubstringIncluded(['Wearable', 'Blind', 'BLE Transit', 'Camera', 'Play Games', 'Pokemon Go'], "PG")).toStrictEqual(["Play Games", "Pokemon Go"]);
 });
@@ -14,4 +15,5 @@ test('testing to see if it works in a single substring', () => {
 
 test('testing to see if it works with words in all caps', () => {
   expect(checkSubstringIncluded(["BLAH", "BAR"], "b")).toStrictEqual(["BLAH", "BAR"]);
+})
 })

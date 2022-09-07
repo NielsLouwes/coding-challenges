@@ -10,20 +10,7 @@ function checkSubstringIncluded(S, K) {
       return item;
     }
   });
-  console.log('filterSubstring', filterSubstring);
- 
   return filterSubstring;
 }
-
-
-
-//checking it with input now
-console.log(
-  "CHECK SOLUTION WITH INPUT",
-  checkSubstringIncluded(
-    ["Wearable", "Blind", "BLE Transit", "Camera", "Play Games", "Pokemon Go"],
-    "PG"
-  )
-);
 
 module.exports = checkSubstringIncluded;
