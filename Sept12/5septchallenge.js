@@ -5,8 +5,7 @@ function arrayRemove(arr) {
   const sortArray = arr.sort((a,b) => a -b);
   sortArray.pop()
   sortArray.shift()
-  const addUpRemainingItems = sortArray.reduce((prev, curr) => prev + curr, 0)
-  return addUpRemainingItems;
+  return addUpRemainingItems = sortArray.reduce((prev, curr) => prev + curr, 0)
 }
 
 module.exports =  arrayRemove;
