@@ -20,24 +20,13 @@
 // 1. Need split up the string into words
 // 2. Need to select the word at index location (loc)
 // 3. return a string that return the indexed word from location with hyphens (num) amount of times
-function modifyMultiply(str, loc, repeat) {
-  const splitWords = str.split(' ');
-  const locatedWord = splitWords[loc];
-  const returnString = `${locatedWord}-`
-  let count = 0;
-  if (repeat = 0) {
-    return;
-  }
-  // while (repeat < loc) {
-  //   repeat += 1;
-  //   str = str + returnString;
-  // }
-  while (count < repeat) {
-   
-    count += 1;
-    str = str + returnString;
-  }
-  return returnString
+function modifyMultiply(str, loc, number) {
+  const splitWords = str.split(' '); // split the string apart to create array
+  const newArray = Array(number).fill(splitWords[loc]); // create new array object of length number specified
+  // fill the array witht the specified word at loc
+  console.log(newArray) // returns '['string, 'string, 'string', string]
+  const result = newArray.join('-')
+  return result;
 }
 
 console.log(modifyMultiply("Test string", 1, 4))
