@@ -16,19 +16,14 @@
 
 // Simple. Good luck.
 
-// STEPS
-// 1. Need split up the string into words
-// 2. Need to select the word at index location (loc)
-// 3. return a string that return the indexed word from location with hyphens (num) amount of times
 function modifyMultiply(str, loc, number) {
-  const splitWords = str.split(' '); // split the string apart to create array
-  const newArray = Array(number).fill(splitWords[loc]); // create new array object of length number specified
-  // fill the array witht the specified word at loc
-  console.log(newArray) // returns '['string, 'string, 'string', string]
-  const result = newArray.join('-')
-  return result;
+  if (str.length = 0 | loc == null | number < 1) {
+    return;
+  }
+  const splitWords = str.split(' '); 
+  return newArray = Array(number).fill(splitWords[loc]).join('-'); 
 }
 
-console.log(modifyMultiply("Test string", 1, 4))
+console.log('modifyMultiply', modifyMultiply('Something else', 0, 4));
 
 module.exports = modifyMultiply;
