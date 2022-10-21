@@ -1,5 +1,4 @@
 function climbingLeaderboard(leaderboard = [], playerScores = []) {
-
   const addPlayerToLeaderboard = [...leaderboard, ...playerScores];
   const uniqueValuesLeaderboard = [...new Set(addPlayerToLeaderboard)];
   const sortedUniqueBoard = uniqueValuesLeaderboard.sort((a, b) => b - a);
@@ -12,3 +11,5 @@ function climbingLeaderboard(leaderboard = [], playerScores = []) {
 }
 
 console.log(climbingLeaderboard([100, 90, 80], [80, 110, 75]));
+
+module.exports = climbingLeaderboard;
