@@ -1,15 +1,14 @@
 function climbingLeaderboard(leaderboard = [], playerScores = []) {
   const addPlayerToLeaderboard = [...leaderboard, ...playerScores];
-  const uniqueValuesLeaderboard = [...new Set(addPlayerToLeaderboard)];
-  const sortedUniqueBoard = uniqueValuesLeaderboard.sort((a, b) => b - a);
-  const returnIndexPlayerScores = playerScores.map((searchTerm) =>
-    sortedUniqueBoard.findIndex((compareTerm) => compareTerm === searchTerm)
+  const uniqueValuesLeaderboard = [...new Set(addPlayerToLeaderboard)].sort(
+    (a, b) => b - a
   );
-
-  const finalScores = returnIndexPlayerScores.map((score) => score + 1);
-  return finalScores;
+  const returnIndexPlayerScores = playerScores.map((searchTerm) =>
+    uniqueValuesLeaderboard.findIndex(
+      (compareTerm) => compareTerm === searchTerm
+    )
+  );
+  return returnIndexPlayerScores.map((score) => score + 1);
 }
-
-console.log(climbingLeaderboard([100, 90, 80], [80, 110, 75]));
 
 module.exports = climbingLeaderboard;
