@@ -12,19 +12,14 @@ function getMoneySpent(keyboards = [], drives = [], b = 0) {
     let maxPrice = -1;
      
     for(let i = 0; i < keyboards.length; i++) {
-        const keyboardPrice = keyboards[i];
         for(let j = 0; j < drives.length; j++) {
-            const drivePrice = drives[j];
-            if (keyboardPrice + drivePrice <= b && keyboardPrice + drivePrice > maxPrice) {
-                maxPrice = keyboardPrice + drivePrice;
+            if (keyboards[i] +  drives[j] <= b && keyboards[i] + drives[j] > maxPrice) {
+                maxPrice = keyboards[i] + drives[j];
             }
         }
     }
     return maxPrice;
 }
-
-console.log('getMoneySpent', getMoneySpent([10,20,30], [3,5,8], 40));
-console.log('getMoneySpent', getMoneySpent([10,20,30], [3,5,8], 13));
 
 module.exports = getMoneySpent;
 
