@@ -14,10 +14,29 @@ const family = {
   "3": ['great grandson', 'great granddaughter'],
 }
 
+// const {"-3": great} = family;
+// console.log('great', great);
 
+// const greatGrandfather = great[0];
+// console.log('greatGrandfather', greatGrandfather);
 
-function generation(x, y) {
-	
+// const grandfather = Object.values(family["-2"]);
+// console.log('grandfather', grandfather);
+
+function generation(x = 0, y = 0) {
+  const grandfather = Object.values(family[x]); // return the correct generation key
+  // if (y != m || y != f) {
+  //   return
+  // }
+  if (y = m) {
+    return grandfather[0]
+  }
+   else if (y = f) {
+    return grandfather[1];  
+  }
+  
 }
+
+console.log(generation(2, f));
 
 module.exports = generation;
