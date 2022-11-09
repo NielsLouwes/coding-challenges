@@ -9,8 +9,9 @@ const family = {
 }
 
 function generation(x = 0, y = 0) {
-  const pickGeneration = Object.values(family[x]); // returns the correct generation key
-  return pickGeneration[y]
+  return Object.values(family[x])[y]; 
 }
+
+console.log('generation()', generation());
 
 module.exports = generation;
