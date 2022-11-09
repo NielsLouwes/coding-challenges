@@ -1,8 +1,3 @@
-/* 
-Need an array with objects
-Need to access it's index
-Return either male of female answer based on y
-*/
 
 const family = {
   "-3": ['great grandfather', 'great grandmother'],
@@ -23,20 +18,13 @@ const family = {
 // const grandfather = Object.values(family["-2"]);
 // console.log('grandfather', grandfather);
 
-function generation(x = 0, y = 0) {
-  const grandfather = Object.values(family[x]); // return the correct generation key
-  // if (y != m || y != f) {
-  //   return
-  // }
-  if (y = m) {
-    return grandfather[0]
-  }
-   else if (y = f) {
-    return grandfather[1];  
-  }
-  
+function generation(x = 0, y) {
+  const pickGeneration = Object.values(family[x]); // returns the correct generation key
+  return pickGeneration[y]
 }
 
-console.log(generation(2, f));
+console.log(generation(2, 0));
+console.log('generation', generation(3,1));
+console.log('generation', generation(3,0));
 
 module.exports = generation;
