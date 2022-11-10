@@ -10,6 +10,7 @@ describe('modifyMultiply function', () => {
     })
 
      test('should return standard result of me when nothing is entered as arguments', () => {
-      expect(generation()).toEqual("me");
+      expect(generation()).toEqual("me!");
     })
+
   });
