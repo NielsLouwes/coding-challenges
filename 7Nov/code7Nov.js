@@ -8,10 +8,14 @@ const family = {
   "3": ['great grandson', 'great granddaughter'],
 }
 
-function generation(x = 0, y = 0) {
-  return Object.values(family[x])[y]; 
+// function generation(x = 0, y = 0) {
+//   return Object.values(family[x])[y]; 
+// }
+
+function generation(x = 0, y = "m") {
+  return y == "m" ? family[x][0] : family[x][1];
+  
 }
 
-console.log('generation()', generation());
 
 module.exports = generation;
