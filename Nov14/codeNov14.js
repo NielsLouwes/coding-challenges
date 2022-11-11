@@ -5,32 +5,33 @@ let x = arr.filter((element, index) => {
   return index % 2 === 0;
 })
 I need to also checks for adds.
-THen use every to make sure each in their individual arrays match what I need.
-
+Then use every to make sure each in their individual arrays match what I need.
 */
 
 function isSpecialArray(arr) {
   //return even indexs in a new array
-  const evenIndexes = arr.filter((element, index) => {
+  const evenIndexes = arr.filter((_, index) => {
     return index % 2 === 0;
   });
   //return odd indexes in a new array
-  const oddIndexes = arr.filter((element, index) => {
+  const oddIndexes = arr.filter((_, index) => {
     return index % 2 !== 0;
   });
-  const isEven = evenIndexes.every((number) => {
+  const checkIfAllEven = evenIndexes.every((number) => {
     return number % 2 === 0;
   });
+  const checkIfAllOdd = oddIndexes.every((number) => {
+    return number % 2 !== 0;
+  })
 
-  return isEven;
+  if (checkIfAllOdd && checkIfAllEven === true) {
+    return true
+  }
+  else {
+    return false;
+  }
 }
 
-console.log("isSpecialArray", isSpecialArray([2, 2, 4, 4, 4, 5]));
+console.log("isSpecialArray", isSpecialArray([0, 1, 4, 3, 4, 5]));
 
-// const ages = [32, 33, 16, 40];
 
-// ages.every(checkAge() => {
-
-// function checkAge(age) {
-//   return age > 18;
-// }
