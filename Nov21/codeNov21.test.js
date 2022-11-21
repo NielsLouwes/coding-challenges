@@ -1,11 +1,20 @@
-const mostExpensive = require("./codeNov21")
+const mostExpensive = require("./codeNov21");
 
-describe('mostExpensive function', () => {
-    // test('describe test here', () => {
-    //   expect(mostExpensive([1,1,2,2])).toEqual(false);
-    // })
-
-    // test('describe test here', () => {
-    //   expect(mostExpensive([0, 1, 4, 3, 4, 5])).toEqual(true);
-    // })
+describe("mostExpensive function", () => {
+  test("returns the most expensive item in the jewelry object", () => {
+    expect(
+      mostExpensive({
+        "Diamond Earrings": 980,
+        "Gold Watch": 250,
+        "Pearl Necklace": 4650,
+      })
+    ).toEqual("The most expensive one is the Pearl Necklace.");
   });
+
+  test("returns a fallback piece of jewelry when no argument is given", () => {
+    expect(mostExpensive()).toEqual(
+      `The most expensive one is the Watch.`
+    );
+  });
+
+});
