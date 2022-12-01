@@ -14,11 +14,14 @@ const testArr = [
 ];
 
 const asterisk = "*";
+const poundSign = "#"
 
 // PART 1
 
 const firstPart = testArr[0].split(""); // split up into individual parts so I can check the 0th index of that.
 const lastPart = testArr[testArr.length - 1].split(""); // split up the final party of arrays
+console.log("lastPart", lastPart);
+console.log("firstPart", firstPart);
 
 const meetsThreePoundSignsCriteria = (currentValue) => currentValue === "#";
 const containsAtleastThreePoundSignsBeginning = firstPart.every(
@@ -37,15 +40,25 @@ console.log(
   containsAtleastThreePoundSignsEnd
 );
 
-// if (firstPartAllPoundSigns && atLeastThreePoundSigns === true) - our functino should check for this to be true before checking on the middle bit.
+// PART 2 ADDING LOGIC FOR CHECKING MIDDLE PART OF GIFT
+const middlePart = testArr[testArr.length - 2].split("");
+console.log('middlePart', middlePart);
+// if the first index of middle part and last index of middlepart = # && middlePart.includes(asterisk), then we are good to go.
+const middleFirstIndexIsPoundSign = testArr[testArr.length - 2].split("")[0].includes(poundSign);
+const middleLastIndexIsPoundSign = testArr[testArr.length - 2].split("")[testArr.length - 1].includes(poundSign);
 
-console.log("lastPart", lastPart);
 
-console.log("firstPart", firstPart);
+console.log('middleFirstIndexIsPoundSign',middleFirstIndexIsPoundSign);
+console.log('middleLastIndexIsPoundSign', middleLastIndexIsPoundSign);
+
+
+// if (firstPartAllPoundSigns && atLeastThreePoundSigns === true) - our function should check for this to be true before checking on the middle bit.
 
 const checkFirst = firstPart.includes(asterisk); // I'm checking if the firstPart array has the asterisk , or includes it.
+const checkMiddle = middlePart.includes(asterisk);
 const checkLast = lastPart.includes(asterisk); // Also checking if the last Pary final indexed item has the asterisk
 console.log("checkFirst", checkFirst);
+console.log('checkMiddle', checkMiddle);
 console.log("checkLast", checkLast);
 
 //First part needs to be a # and there must be an astrisk inside
