@@ -1,4 +1,3 @@
-
 /* 
 1. Look for the asterisk *
 2. If it doesn't exist = false
@@ -10,11 +9,11 @@
 const testArr = [
   "###", // the first arrayItem needs to have every item being # AND minimum length of 3
   "#*#", // the second arrayItem should have a * in not the last AND first position AND must exist
-  "###" // the last arrayItem should have minimum 3 # signs and all contain #
+  "###", // the last arrayItem should have minimum 3 # signs and all contain #
 ];
 
 const asterisk = "*";
-const poundSign = "#"
+const poundSign = "#";
 
 // PART 1
 
@@ -23,7 +22,8 @@ const lastPart = testArr[testArr.length - 1].split(""); // split up the final pa
 console.log("lastPart", lastPart);
 console.log("firstPart", firstPart);
 
-const meetsThreePoundSignsCriteria = (currentValue) => currentValue === "#";
+const meetsThreePoundSignsCriteria = (currentValue) =>
+  currentValue === poundSign;
 const containsAtleastThreePoundSignsBeginning = firstPart.every(
   meetsThreePoundSignsCriteria
 );
@@ -42,23 +42,24 @@ console.log(
 
 // PART 2 ADDING LOGIC FOR CHECKING MIDDLE PART OF GIFT
 const middlePart = testArr[testArr.length - 2].split("");
-console.log('middlePart', middlePart);
+console.log("middlePart", middlePart);
 // if the first index of middle part and last index of middlepart = # && middlePart.includes(asterisk), then we are good to go.
-const middleFirstIndexIsPoundSign = testArr[testArr.length - 2].split("")[0].includes(poundSign);
-const middleLastIndexIsPoundSign = testArr[testArr.length - 2].split("")[testArr.length - 1].includes(poundSign);
+const middleFirstIndexIsPoundSign =
+  testArr[testArr.length - 2].split("")[0] === poundSign;
 
+const middleLastIndexIsPoundSign =
+  testArr[testArr.length - 2].split("")[testArr.length - 1] === poundSign;
 
-console.log('middleFirstIndexIsPoundSign',middleFirstIndexIsPoundSign);
-console.log('middleLastIndexIsPoundSign', middleLastIndexIsPoundSign);
+console.log("middleFirstIndexIsPoundSign", middleFirstIndexIsPoundSign);
+console.log("middleLastIndexIsPoundSign", middleLastIndexIsPoundSign);
 
-
-// if (firstPartAllPoundSigns && atLeastThreePoundSigns === true) - our function should check for this to be true before checking on the middle bit.
+// if (containsAtleastThreePoundSignsBeginning && containsAtleastThreePoundSignsEnd === true) - our function should check for this to be true before checking on the middle bit.
 
 const checkFirst = firstPart.includes(asterisk); // I'm checking if the firstPart array has the asterisk , or includes it.
 const checkMiddle = middlePart.includes(asterisk);
 const checkLast = lastPart.includes(asterisk); // Also checking if the last Pary final indexed item has the asterisk
 console.log("checkFirst", checkFirst);
-console.log('checkMiddle', checkMiddle);
+console.log("checkMiddle", checkMiddle);
 console.log("checkLast", checkLast);
 
 //First part needs to be a # and there must be an astrisk inside
@@ -66,18 +67,53 @@ console.log("checkLast", checkLast);
 const findAsterisk = testArr.some((element) => element === "#*#");
 console.log("findAsterisk", findAsterisk);
 
-function inBox(arr) {
+function inBox(arr = []) {
   const asterisk = "*";
-
+  const poundSign = "#";
   //Capture both first item in first array item and last item in last array item
-  const firstItem = arr[0].split("")[0];
-  const lastItem = arr[arr.length - 1].split("");
+  const firstPart = testArr[0].split(""); // split up into individual parts so I can check the 0th index of that.
+  const lastPart = testArr[testArr.length - 1].split(""); // split up the final party of arrays
+
+  // Check that both beginning array and ending array have at least 3 pound signs for border of the box
+  const meetsThreePoundSignsCriteria = (currentValue) =>
+    currentValue === poundSign;
+  const containsAtleastThreePoundSignsBeginning = firstPart.every(
+    meetsThreePoundSignsCriteria
+  );
+  const containsAtleastThreePoundSignsEnd = lastPart.every(
+    meetsThreePoundSignsCriteria
+  );
+
+  //check if middle has * in either first index or last
+  const middlePart = testArr[testArr.length - 2].split("");
+  const middleFirstIndexIsPoundSign = testArr[testArr.length - 2]
+    .split("")[0] === asterisk;
+   
+  const middleLastIndexIsPoundSign = testArr[testArr.length - 2]
+    .split("")
+    [testArr.length - 1] === asterisk;
+
+  console.log("middleFirstIndexIsPoundSign", middleFirstIndexIsPoundSign);
+  console.log("middleLastIndexIsPoundSign", middleLastIndexIsPoundSign);
 
   // check if both cases includes the asterisk, if so, the function returns false because it should be in the box
   const checkFirst = firstPart.includes(asterisk);
+  const checkMiddle = middlePart.includes(asterisk);
   const checkLast = lastPart.includes(asterisk);
 
-  if (checkFirst || checkLast === true) {
+  if (
+    checkFirst ||
+    checkLast === true ||
+    checkMiddle === false ||
+    (containsAtleastThreePoundSignsBeginning &&
+      containsAtleastThreePoundSignsEnd === false) ||
+    (middleFirstIndexIsPoundSign && middleLastIndexIsPoundSign === true)
+  ) {
     return false;
   }
+  return true;
 }
+
+console.log("inBox", inBox(testArr));
+
+module.exports = inBox;
