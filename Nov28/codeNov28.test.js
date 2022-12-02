@@ -11,8 +11,8 @@ describe("inBox function", () => {
     expect(inBox(noGiftBox)).toEqual(false);
   });
 
-  test("should return false if either an odd index number is even or an even index number is odd", () => {
-    expect(isSpecialArray(["###", "#*#", "###"])).toEqual(true);
+  test("should return true if there is a box with gift inside", () => {
+    expect(inBox(["###", "#*#", "###"])).toEqual(true);
   });
 
   test("should return false if there is no border around the asterik", () => {
@@ -20,10 +20,10 @@ describe("inBox function", () => {
   });
 
   test("should return true if there is a box with an asterisk inside", () => {
-    expect(inBox(correctBox).toEqual(true));
+    expect(inBox(correctBox)).toEqual(true);
   });
 
   test("should return false if no box provided in function", () => {
-    expect(inBox().toEqual(false));
+    expect(inBox()).toEqual(false);
   });
 });
