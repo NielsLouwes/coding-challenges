@@ -8,4 +8,7 @@ describe('isGoodMatch function', () => {
      test('should return good match if even number of numbers in array are givne', () => {
       expect(isGoodMatch([2, 6, 7, 4])).toEqual('good match');
     })
+    test('should return good match if even number of numbers in array are givne', () => {
+      expect(isGoodMatch()).toEqual('good match');
+    })
   });
