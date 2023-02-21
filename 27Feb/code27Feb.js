@@ -10,7 +10,14 @@ const checkEnoughMoney = (change, amountDue) => {
 };
 
 const checkEnoughDynamic = (change, amountDue) => {
-  const changeValueArray = [0.25, 0.1, 0.5, 0.1];
+  const coinValues = [0.25, 0.1, 0.5, 0.1];
+
+  let totalChange = 0;
+  for (let i = 0; i <change.length; i ++) {
+    totalChange += change[i] * coinValues[i]
+  }
+
+  return totalChange >= amountDue;
 };
 
 console.log(checkEnoughMoney([20, 0, 10, 5], 20.0));
