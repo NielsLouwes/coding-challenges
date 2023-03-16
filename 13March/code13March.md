@@ -18,3 +18,11 @@ Output: []
 Example 3:
 Input: digits = "2"
 Output: ["a","b","c"]
+
+
+TODO
+1. Create a config
+2. Take the digit input and split that so we can map over it
+3. Then while mapping over it, if the number matches the numberMapping, push that value to an array
+4. Return all possible letter combinations
+5. for a single digit, its just each letter from value (splitting it)
