@@ -1,35 +1,17 @@
-const { groceryStore, addOrUpdateStore } = require("./code13March");
+const getPhoneNumberCombinations = require("./code13March");
 
-describe("addOrUpdateStore function", () => {
-  beforeEach(() => {
-    groceryStore.set("cheese", 4.0);
-    groceryStore.set("ham", 2.0);
-    groceryStore.set("milk", 1.0);
+describe("getPhoneNumberCombinations function", () => {
+  it("should return the letter combination for a single digit entered", () => {
+    expect(getPhoneNumberCombinations("2")).toEqual('abc');
   });
 
-  afterEach(() => {
-    groceryStore.clear();
+  it("should return all letters combinations represented by the digits", () => {
+     expect(getPhoneNumberCombinations("23")).toEqual(['abc' , 'def']);
   });
 
-  it("should add a new item to the store when it does not exist", () => {
-    addOrUpdateStore("bread", 3.5);
-    expect(groceryStore.has("bread")).toBe(true);
-    expect(groceryStore.get("bread")).toBe(3.5);
-    expect(groceryStore.size).toBe(4);
+  it("should return an empty array if no digit is entered", () => {
+     expect(getPhoneNumberCombinations()).toEqual([]);
   });
 
-  it("should update the price of an item when it already exists", () => {
-    addOrUpdateStore("cheese", 3.5);
-    expect(groceryStore.has("cheese")).toBe(true);
-    expect(groceryStore.get("cheese")).toBe(3.5);
-    expect(groceryStore.size).toBe(3);
-  });
 
-  it("should log a message when the item already exists", () => {
-    const spy = jest.spyOn(console, "log");
-    addOrUpdateStore("cheese", 3.5);
-    expect(spy).toHaveBeenCalledWith("This item already exists!");
-    spy.mockRestore();
-    expect(groceryStore.size).toBe(3);
-  });
 });

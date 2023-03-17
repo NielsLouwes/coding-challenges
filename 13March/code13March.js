@@ -1,4 +1,4 @@
-const getPhoneNumberCombinations = (digit) => {
+const getPhoneNumberCombinations = (digit = "") => {
   const numberMapping = {
     2: "abc",
     3: "def",
@@ -9,13 +9,15 @@ const getPhoneNumberCombinations = (digit) => {
     8: "tuv",
     9: "wxyz",
   };
-  if (digit.length === 1) {
-    const splitDigit = digit.split("");
-    const singleDigitReturn = numberMapping[splitDigit];
-    return singleDigitReturn;
-  }
-};
 
-console.log("getPhoneNumberCombinations", getPhoneNumberCombinations("2"));
+  if (digit.length === 1) {
+    return numberMapping[digit];
+  }
+
+  const splitDigit = digit.split(''); 
+  const mapMultipleDigits = splitDigit.map((item) => numberMapping[item]) 
+
+  return mapMultipleDigits;
+};
 
 module.exports = getPhoneNumberCombinations;
