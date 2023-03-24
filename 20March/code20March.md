@@ -23,4 +23,4 @@ Explanation: Alice's hand can not be rearranged into groups of 4.
 TODO
 1. hand is array
 2. size should see if its divisible by array length - if NOT it cannot be arranged, return false
-3. for TRUE case - 
+3. for TRUE case - if hand length if divisible by groupSize without a remainder

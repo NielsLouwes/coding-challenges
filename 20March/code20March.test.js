@@ -1,15 +1,11 @@
-const getPhoneNumberCombinations = require("./code20March");
+const handOfStraights = require("./code20March");
 
-describe("getPhoneNumberCombinations function", () => {
-  it("should return the letter combination for a single digit entered", () => {
-    expect(getPhoneNumberCombinations("2")).toEqual("abc");
+describe("handOfStraights function", () => {
+  it("should return true if the groupSize is divisible by the hand length", () => {
+    expect(handOfStraights([1,2,3,4], 2)).toEqual(true);
   });
 
-  it("should return all letters combinations represented by the digits", () => {
-    expect(getPhoneNumberCombinations("23")).toEqual(["abc", "def"]);
-  });
-
-  it("should return an empty array if no digit is entered", () => {
-    expect(getPhoneNumberCombinations()).toEqual([]);
+  it("should return false if the groupSize is NOT divisible by the hand length", () => {
+    expect(handOfStraights([1,2,3,4], 3)).toEqual(false);
   });
 });
