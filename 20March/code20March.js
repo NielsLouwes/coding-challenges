@@ -1,10 +1,7 @@
-const handOfStraights = (hand, groupSize) => {
-  if (!Number.isInteger(groupSize) || groupSize === 0) {
-    return false;
-  }
-  return hand.length % groupSize === 0;
+const mergeIntervals = (intervalArray) => {
+  
    
 };
 
-module.exports = handOfStraights;
+module.exports = mergeIntervals;
 
