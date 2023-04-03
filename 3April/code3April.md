@@ -13,3 +13,9 @@ Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
 
+TODO
+1. Need to iterate over the array
+2. Check to make sure [endi] is > [starti] of the next item
+3. If TRUE, return the lowest and highest two numbers of both arrays 
+4. return that as a new array, may need to place back in its position
+
