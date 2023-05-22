@@ -1,21 +1,15 @@
-const returnAnagrams = require("./code22May");
+const onlyStringsWithNumbers = require("./code22May");
 
 describe("returnAnagrams function", () => {
-  it("should return anagrams of the same groups of letters", () => {
-    const input = ["eat", "tea", "tan", "ate", "nat", "bat"];
-    const solution = [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+  it("should return only items that have a number included", () => {
+    const input = ["1a", "a", "2b", "b"];
 
-    expect(returnAnagrams(input)).toEqual(solution);
+    expect(onlyStringsWithNumbers(input)).toEqual(["1a", "2b"]);
   });
 
-  it("should return an empty string if nothing is entered", () => {
-    const input = [""];
-    const emptyStringResult = [[""]]
-    
-    expect(returnAnagrams(input)).toEqual(emptyStringResult)
-  });
+  it("should return an empty array if there are no numbers in strings", () => {
+    const input = ["a", "b"];
 
-  it("should also return an anagram if a single letter is provided", () => {
-    expect(returnAnagrams(["a"])).toEqual([["a"]]);
+    expect(onlyStringsWithNumbers(input)).toEqual([]);
   });
 });
