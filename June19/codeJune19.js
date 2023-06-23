@@ -1,6 +1,6 @@
 const nearestChapter = (chapters, pageNumber) => {
   let sortedChapters = Object.entries(chapters).sort((a, b) => a[1] - b[1]);
-  console.log("sortedChapter", sortedChapters);
+  
   let closestChapter = null;
   let closestDifference = Infinity;
   let maxPages = 0;
