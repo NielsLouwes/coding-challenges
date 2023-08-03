@@ -13,8 +13,5 @@ function restructureArray(arr = []) {
   return [...numberArr, ...letterArr];
 }
 
-console.log(restructureArray([1, "a", 2, "b"]));
-console.log(restructureArray([1, 2]));
-
 module.exports = restructureArray;
 

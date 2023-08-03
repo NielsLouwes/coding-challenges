@@ -25,7 +25,7 @@ describe('Restructure Array function', () => {
   test('that the function returns an empty array if nothing is passed', () => {
     const emptyArray = [];
     expect(restructureArray(emptyArray)).toEqual(
-      ['f', 'b' , 'o']
+      []
     );
   })
 })
