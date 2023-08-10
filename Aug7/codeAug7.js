@@ -1,70 +1,61 @@
 const cssHtmlTags = ["<", ">", "{", "}"];
-const cssTags = ["{", "}"];
-const htmlTags = ["<", ">"];
 
 const analyzeContent = (content = "") => {
-  // Text logic
-  if (!content.length) {
-    return "This is not a supported format";
-  }
-  const checkForNewLine = content.split(/\r?\n/); // splits up our text into two array items, counting them
-  const splitContent = content.split("");
-  console.log("split", splitContent);
+  if (!content.length) return "This is not a supported format";
 
-  const containsTag = splitContent.some((item) => cssHtmlTags.includes(item)); // returns TRUE if tags are included
+  const lines = content.split(/\r?\n/);
+  const chars = content.split("");
 
-  if (!containsTag) {
+  if (!chars.some((char) => cssHtmlTags.includes(char))) {
     return {
       contentType: "TEXT",
-      lineNumber: checkForNewLine.length
+      lineNumber: lines.length
     };
   }
 
-  // CSS logic
-  const containsCssTag = splitContent.some((item) => cssTags.includes(item));
-  const cssSelectors = [];
-
-  if (containsCssTag) {
-    splitContent.map((item, index) => {
-      if (item === "{") {
-        const selector = content.slice(0, index).trim().split(" ").pop();
-        cssSelectors.push(selector);
-      }
-    });
+  if (chars.includes("{")) {
+    return analyzeCss(content, chars);
   }
 
-  const countCssOccurrences = cssSelectors.reduce((acc, curr) => {
+  if (chars.includes("<")) {
+    return analyzeHtml(content);
+  }
+};
+
+const analyzeCss = (content, chars) => {
+  const selectors = [];
+
+  chars.forEach((char, index) => {
+    if (char === "{") {
+      const selector = content.slice(0, index).trim().split(" ").pop();
+      selectors.push(selector);
+    }
+  });
+
+  const count = selectors.reduce((acc, curr) => {
     acc[curr] = (acc[curr] || 0) + 1;
     return acc;
   }, {});
 
-  if (containsCssTag) {
-    return {
-      contentType: "CSS",
-      cssTargets: countCssOccurrences
-    };
-  }
+  return {
+    contentType: "CSS",
+    cssTargets: count
+  };
+};
 
-  // HTML logic
-  const containsHTMLTags = splitContent.some((item) => htmlTags.includes(item));
+const analyzeHtml = (content) => {
+  const matches = content.match(/\<(\w+)\>/g);
 
-  if (containsHTMLTags) {
-    const matches = content.match(/\<(\w+)\>/g);
+  const count = matches.reduce((acc, tag) => {
+    tag = tag.replace(/<|>/g, "");
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {});
 
-    // count occurrences
-    const htmlTagOccurrences = matches.reduce((acc, tag) => {
-      tag = tag.replace(/<|>/g, "");
-      acc[tag] = (acc[tag] || 0) + 1;
-      return acc;
-    }, {});
-
-    return {
-      contentType: "HTML",
-      htmlTags: htmlTagOccurrences
-    };
-  }
+  return {
+    contentType: "HTML",
+    htmlTags: count
+  };
 };
 
 module.exports = analyzeContent;
-
-
