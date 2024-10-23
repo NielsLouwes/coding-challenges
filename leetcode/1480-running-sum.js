@@ -32,5 +32,3 @@ const runningSum = function (nums = []) {
 };
 
 runningSum([1, 2, 3, 4]);
-
-export default runningSum;

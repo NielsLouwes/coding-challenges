@@ -1,4 +1,4 @@
-import runningSum from "./1480-running-sum";
+const runningSum = require("./1480-running-sum");
 
 describe("running Sum function", () => {
   it("should correctly add up the sums of each item in the array", () => {
