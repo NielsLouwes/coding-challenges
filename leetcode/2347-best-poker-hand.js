@@ -3,6 +3,10 @@
 // ranks is up to 13 cards 1 through 13
 
 const bestHand = (ranks, suits) => {
+  if (ranks.length != suits.length) {
+    return;
+  }
+
   let suitMap = {};
   let ranksMap = {};
 
@@ -39,4 +43,4 @@ const bestHand = (ranks, suits) => {
   return "High Card";
 };
 
-console.log(bestHand([1, 2, 3, 4], ["a", "a", "b", "a", "a"]));
+console.log(bestHand([1, 2, 3, 4, 4, 4], ["a", "a", "b", "a", "a", "b"]));
