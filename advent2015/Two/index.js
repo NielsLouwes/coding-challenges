@@ -1008,10 +1008,10 @@ console.log("typeof data", typeof data);
 // find the surface area of the box, which is 2*l*w + 2*w*h + 2*h*l.
 // A present with dimensions 2x3x4 requires 2*6 + 2*12 + 2*8 = 52 square feet of wrapping paper
 
-const prepareData = () => {
-  const measurements = data.split("\n").slice(1);
-  measurements.pop();
+const measurements = data.split("\n").slice(1);
+measurements.pop();
 
+const prepareData = () => {
   console.log("measurements", measurements);
 
   const x = measurements.map((item) => {
@@ -1020,29 +1020,38 @@ const prepareData = () => {
 
   let totalCount = 0;
 
-  const getWrappingPaperSizes = x.map((item) => {
+  x.map((item) => {
     const [length, width, height] = item;
 
-    const area1 = 2 * (length * width);
-    const area2 = 2 * (width * height);
-    const area3 = 2 * (height * length);
+    const area1 = length * width;
+    const area2 = width * height;
+    const area3 = height * length;
 
-    const result = area1 + area2 + area3;
+    const slack = Math.min(area1, area2, area3);
+
+    const result = area1 * 2 + area2 * 2 + area3 * 2 + slack;
+
     totalCount = totalCount + result;
   });
-  // each array item is now an array of [length, width, height]
-  // area = length * width == smallest side * width???
 
-  const slack = x.map((item) => {
-    const [length, width, height] = item;
-
-    const smallestSide = Math.min(...item);
-    console.log("smallestSide", smallestSide);
-  });
-
-  console.log("x", x);
-  console.log("totalCount", totalCount);
-  return measurements;
+  return totalCount;
 };
 
-prepareData();
+console.log("PREPARE DATA:", prepareData()); // 878141 square feet of wrapping paper
+
+const input_areas = measurements.map((box) => {
+  let [s1, s2, s3] = box.split("x").map((n) => +n);
+
+  let a = s1 * s2;
+  let b = s1 * s3;
+  let c = s2 * s3;
+
+  let min_side = Math.min(a, b, c);
+
+  return a * 2 + b * 2 + c * 2 + min_side;
+});
+
+console.log("input_areas", input_areas);
+let total_square_feet = input_areas.reduce((a, b) => a + b, 0);
+
+console.log("total_square_feet", total_square_feet);
