@@ -1,10 +1,10 @@
 const stack = [];
 
-const addItemToStack = (item) => {
+export const addItemToStack = (item) => {
   return stack.push(item);
 };
 
-const removeItemFromStack = () => {
+export const removeItemFromStack = () => {
   return stack.pop();
 };
 
