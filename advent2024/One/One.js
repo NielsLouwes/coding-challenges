@@ -33,6 +33,8 @@ const readInputFile = async () => {
 
     console.log("arr1", arr1);
     console.log("arr2", arr2);
+
+    console.log(Math.abs(3 - 1));
   } catch (err) {
     console.error("Error reading file:", err);
   }
