@@ -11,30 +11,38 @@ const readInputFile = async () => {
     const arr1 = [];
     const arr2 = [];
     const text = data.toString().split("\n");
-    const finalText = text.map((item) => item.split(/\s+/));
-
-    // push every odd index into arr 1
-    // push every even index into arr 2
+    const finalText = text.map((item) => item.split(/\s+/)).flat(Infinity);
 
     const prepareData = () => {
       finalText.map((item, index) => {
-        arr1.push(item[0]);
-        arr2.push(item[1]);
+        if (index % 2 === 0) {
+          arr1.push(Number(item));
+        }
+        if (index % 2 !== 0) {
+          arr2.push(Number(item));
+        }
       });
     };
 
     if (data.length > 0) {
       prepareData();
     }
-    // console.log("File content:", finalText);
 
+    arr1.pop();
     arr1.sort();
     arr2.sort();
 
-    console.log("arr1", arr1);
-    console.log("arr2", arr2);
+    let result = 0;
 
-    console.log(Math.abs(3 - 1));
+    const addDifferences = () => {
+      for (let i = 0; i < arr1.length; i++) {
+        result += Math.abs(arr1[i] - arr2[i]);
+      }
+    };
+
+    addDifferences();
+
+    console.log("result", result);
   } catch (err) {
     console.error("Error reading file:", err);
   }
