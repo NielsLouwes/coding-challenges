@@ -9,15 +9,21 @@ import { readFile } from "fs/promises";
 
 const readFileContent = async () => {
   try {
-    const data = readFile("./input.txt", "utf-8");
-    const preparedData = [];
+    const data = await readFile("./input.txt", "utf-8");
 
-    const text = (await data).toString().split("\n");
-    text.map((item) => {
-      preparedData.push([item]);
+    const prepData = data.split("\n").map((item) => {
+      return item.split(" ").map(Number);
     });
+    console.log("prepData", prepData);
 
-    console.log("preparedData", preparedData);
+    // const testIfSorted = () => {
+    //   preparedData.every((item, index) => {
+    //     console.log("item, item + 1", item, item + 1);
+    //   });
+    // };
+
+    // testIfSorted();
+    // console.log("data", data);
   } catch (err) {
     console.error("Error reading file:", err);
   }
