@@ -81,33 +81,3 @@ const readInputFile = async () => {
 };
 
 readInputFile();
-
-const list1 = [3, 4, 2, 1, 3, 3]; // check item1 (3), count occurrences of 3 in list 2, add it up, return that in an object, where item1 is key, itemCount is value
-const list2 = [4, 3, 5, 3, 9, 3];
-
-// find the # of occurences of each item in list one found in list
-// 1. first build dictionary with all the numbers in list 1, then do the adding up
-
-// const findOccurences = () => {
-//   let result = [];
-
-//   list1.forEach((item1) => {
-//     let count = 0;
-
-//     console.log("count", count);
-
-//     list2.forEach((item2) => {
-//       if (item1 === item2) {
-//         count++;
-//       }
-//     });
-//     result.push({ [item1]: count * item1 });
-//   });
-
-//   const countValues = result
-//     .map((obj) => Object.values(obj))
-//     .flat()
-//     .reduce((acc, curr) => acc + curr);
-// };
-
-// findOccurences();
