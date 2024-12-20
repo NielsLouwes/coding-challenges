@@ -20,17 +20,16 @@ const containsDuplicate = (nums = []) => {
   let currentItem = [];
 
   for (let i = nums.length - 1; i >= 0; i--) {
-    console.log("num", nums[i]);
+    // console.log("num", nums[i]);
     // if last index item === currentItem, then duplicate found
     // if not, that becomes new current item and we .pop the item we checked out of array
 
     if (nums[i] !== currentItem) {
       currentItem = nums[i];
     } else if (nums[i] === currentItem) {
-      console.log("duplicate found!");
+      return true;
     }
   }
-  console.log("currentItem", currentItem);
 };
 
 containsDuplicate([1, 2, 3, 6]);
@@ -52,4 +51,22 @@ const duplicateNewSetMethod = (input) => {
 };
 
 // console.log(duplicateNewSetMethod([1, 2, 3, 3])); // returns TRUE
-console.log(duplicateNewSetMethod([1, 2, 3, 4])); // returns FALSE
+// console.log(duplicateNewSetMethod([1, 2, 3, 4])); // returns FALSE
+
+const findDuplicatesWithHash = (input) => {
+  const result = {};
+
+  input.forEach((item) => {
+    if (!result[item]) {
+      result[item] = 0;
+    }
+
+    result[item]++;
+  });
+
+  // check if any of the values are greater than 1
+
+  return Object.values(result).some((item) => item > 1);
+};
+
+console.log(findDuplicatesWithHash([1, 2, 3, 3, 4]));
