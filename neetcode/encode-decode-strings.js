@@ -38,6 +38,22 @@ const solution = encode(["neet", "code", "love", "you"]);
 
 const decode = (encodedString) => {
   console.log("encodedString", encodedString);
+
+  const removeEncoding = encodedString.split("&");
+  console.log("removeEncoding", removeEncoding);
+
+  removeEncoding.pop();
+  const result = removeEncoding.map((item) => {
+    return item;
+  });
+
+  console.log("removeEncoding", removeEncoding);
+  console.log("result", result);
+
+  const x = removeEncoding.map((item) => {
+    const x = item.split("");
+    console.log("x", x);
+  });
 };
 
 decode(solution);
