@@ -1,17 +1,10 @@
-
-
 const checkEnoughDynamic = (change = 0, amountDue = 0) => {
-  const coinValues = [0.25, 0.1, 0.5, 0.1];
+  const [quarter, dime, nickel, penny] = change;
 
-  let totalChange = 0;
-  for (let i = 0; i <change.length; i ++) {
-    totalChange += change[i] * coinValues[i]
-  }
-
-  return totalChange >= amountDue;
+  // only checking if you have enough money
+  const total = quarter * 0.25 + dime * 0.1 + nickel * 0.5 + penny * 0.01;
+  console.log("total", total);
+  return total >= amountDue;
 };
 
-
-
 module.exports = checkEnoughDynamic;
-

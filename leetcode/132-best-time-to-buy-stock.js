@@ -23,20 +23,8 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 */
 const maxProfit = function (prices) {
-  let lowestBuyNumber = prices[0];
-  let profit = 0;
-
-  for (let i = 1; i < prices.length; i++) {
-    // if value im iterating over is less than the first item in prices array
-    if (prices[i] < lowestBuyNumber) {
-      console.log("prices[i]", prices[i]);
-      lowestBuyNumber = prices[i]; // then lowestBuyNumber pointer becomes the new lowest value
-    } else if (prices[i] - lowestBuyNumber > profit) {
-      // profit is 0 at first, then we check if current price in arr - lowestBuyNumber number
-      profit = prices[i] - lowestBuyNumber;
-    }
-  }
-  return profit;
+  // check if prices[i] < lowerprice, if is it becomes lowest price
+  //
 };
 
 maxProfit([7, 1, 5, 3, 6, 4]);
