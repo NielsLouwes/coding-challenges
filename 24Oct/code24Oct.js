@@ -1,15 +1,19 @@
 function getMoneySpent(keyboards = [], drives = [], b = 0) {
-    let maxPrice = -1;
-     
-    for(let i = 0; i < keyboards.length; i++) {
-        for(let j = 0; j < drives.length; j++) {
-            if (keyboards[i] +  drives[j] <= b && keyboards[i] + drives[j] > maxPrice) {
-                maxPrice = keyboards[i] + drives[j];
-            }
-        }
+  let mostExpensiveCombo = 0;
+
+  for (let i = 0; i < keyboards.length; i++) {
+    if (keyboards[i] + drives[i] > b) {
+      return -1;
     }
-    return maxPrice;
+
+    if (keyboards[i] + drives[i] <= b) {
+      mostExpensiveCombo = keyboards[i] + drives[i];
+    }
+  }
+
+  return mostExpensiveCombo;
 }
 
-module.exports = getMoneySpent;
+getMoneySpent([40, 50, 60], [5, 8, 12], 60);
 
+module.exports = getMoneySpent;

@@ -1,4 +1,4 @@
-A person wants to determine the most expensive computer keyboard and USB drive that can be purchased with a give budget. Given price lists for keyboards and USB drives and a budget, find the cost to buy them. If it is not possible to buy both items, return  -1.
+A person wants to determine the most expensive computer keyboard and USB drive that can be purchased with a give budget. Given price lists for keyboards and USB drives and a budget, find the cost to buy them. If it is not possible to buy both items, return -1.
 
 Example:
 keyboards =[40,50,60]
@@ -28,3 +28,8 @@ int b: the budget
 function getMoneySpent(keyboards, drives, b) {
 
 }
+
+To do
+
+1. Most expensive combination of keyboards and drives array
+2. if lowest value (keyboard[i]) + drives[i] < b , return negative one.
