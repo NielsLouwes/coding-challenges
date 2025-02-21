@@ -17,11 +17,23 @@ modifyMultiply ("This is a string",0,3)
 Simple. Good luck.
 */
 
-function modifyMultiply(string = '', index = 0, amountOfRepeats = 0) {
-  const splitWords = string.split(' '); 
-  return Array(amountOfRepeats).fill(splitWords[index]).join('-'); 
+function modifyMultiply(string = "", index = 0, amountOfRepeats = 0) {
+  const words = string.split(" ");
+
+  if (words.length < index + 1) {
+    return null;
+  }
+
+  const chosenWord = words[index];
+  const resultArray = [];
+
+  for (i = 0; i < amountOfRepeats; i++) {
+    resultArray.push(chosenWord);
+  }
+
+  return resultArray.toString().replaceAll(",", "-");
 }
 
-console.log('modifyMultiply', modifyMultiply('Something else', 0, 4));
+modifyMultiply("Test string", 3, 4);
 
 module.exports = modifyMultiply;
