@@ -2,7 +2,7 @@ const mostProfit = (prices = []) => {
   // output is highest price[i] - lowest price[i]
 
   let profit = 0;
-  let stockToBuy = prices[0]; // initial is price index 0
+  let stockToBuy = prices[0]; // holds the lowest stockTobuy Price
 
   for (let i = 0; i < prices.length; i++) {
     if (stockToBuy > prices[i]) {

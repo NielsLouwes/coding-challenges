@@ -1,12 +1,17 @@
-const isGoodMatch = (arr = []) => {
-  if (arr.length % 2 !== 0) {
-    return "bad match";
+const isGoodMatch = (numbers = []) => {
+  if (numbers.length < 1) return 
+  if (numbers.length % 2 !== 0) {
+    console.log('bad match!')
+    return [];
   }
-  let result = [];
-  for (let i = 0; i < arr.length - 1; i += 2) {
-    result.push(arr[i] + arr[i + 1]);
-  }
-  return 'good match';
-};
 
-module.exports = isGoodMatch;
+  const finalArr = [];
+
+  for (let i = 0; i < numbers.length; i += 2) {
+    finalArr.push(numbers[i] + numbers[i + 1])
+  }
+
+  return finalArr;
+}
+
+console.log(isGoodMatch([1,2,3,4,5]))
