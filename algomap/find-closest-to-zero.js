@@ -1,22 +1,21 @@
-// have to deal with negative numbers as well
+// have to deal with negative numbers as well , find the number that is closest to 0
+// 1. first regular numbers - compare each item difference with 0
 
 const findClosestNumber = (nums = []) => {
-  let closest = nums[0];
+  let closest = nums[0]
 
-  for (let num of nums) {
-    if (Math.abs(num) < Math.abs(closest)) {
-      closest = num;
+  nums.forEach((number) => {
+    const absoluteDiff = Math.abs(number)
+    if (absoluteDiff < closest) {
+      closest = number
     }
-  }
+  
+    return absoluteDiff;
+  })
 
-  if (closest < 0 && nums.includes(Math.abs(closest))) {
-    return Math.abs(closest);
-  } else {
-    return closest;
-  }
+  return closest;
 };
 
-findClosestNumber([-4, -2, 1, 4, 8]);
+findClosestNumber([ 4, 2, 5, -1 , -3]);
 
-const text = Math.abs(-5);
-console.log("text", text);
+
