@@ -82,13 +82,40 @@ console.log('values', values)
 const totalWordCount = [...letters.values()].reduce((acc, curr) => acc + curr);
 console.log('totalWordCount', totalWordCount)
 
-// 3. Replace a plain object with a MAP
+// 3. Replace a plain object with a MAP , and print it in a nice format 
 
 const countryCodes = {
     NL: "Netherlands",
     DE: "Germany",
     FR: "France"
   };
+
+  const countries = new Map();
+
+  for (const [countryCode, countryName] of Object.entries(countryCodes)) {
+    console.log(`${countryCode}: ${countryName}`);
+
+    countries.set(countryCode, countryName)
+  }
+
+  console.log('countries', countries)
+
+  const printCountryInformation = countries.forEach((countryName , countryCode) => {
+    console.log(`Countrycodes - ${countryCode} - ${countryName}`)
+  })
+
+  printCountryInformation()
+
+  // 4. Filtering a MAP
+
+  const productMapTwo = new Map([
+    ["Shoes", 320],
+    ["Shirt", 160],
+    ["Hat", 30]
+  ]);
+
+
+
   
 
 
