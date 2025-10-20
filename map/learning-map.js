@@ -2,9 +2,6 @@
 A MAP is a key value store that can store anything as keys
 It allows only unique keys, by automatically overwriting previous keys of the same name
 
-
-
-
 */
 
 const salesData = [
