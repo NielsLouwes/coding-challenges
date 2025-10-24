@@ -13,9 +13,9 @@ const channableProducts = [
 
  // channable Products have been updated. Sync it with the google products
 
- // 1. You need two objects to serve as comparison lookup for products
- // 2. create 3 arrays to hold - deleted, updated, added
-
+ // 1. You need two objects for both arrays to serve as comparison lookup for products
+ // 2. create 3 arrays to hold - deleted, updated, added - these are filter operations where you compare array IDs with the new Object ID's
+ // 3. Then you run DELETE< UPDATE, ADD operations on each, step by step
 
 const newChannableProductsMap = {};
 const googleCSSProductsMap = {};

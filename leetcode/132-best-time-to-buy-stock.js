@@ -22,9 +22,27 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 3. Sum those
 
 */
-const maxProfit = function (prices) {
+const maxProfit = (prices) => {
   // check if prices[i] < lowerprice, if is it becomes lowest price
   //
+
+  // if current price < previous lowest price, it becomes lowest price
+  // if next price is > than current price, save the difference
+
+  let difference = 0;
+  let lowestPrice = prices.length
+
+  if (difference === 0) return 
+
+  const checkDifference = prices.forEach((price, index, array) => {
+     if (price < lowestPrice) {
+      lowestPrice = price
+     }
+
+     console.log('array', array)
+  })
+
+  console.log('checkDifferences()', checkDifferences())
 };
 
-maxProfit([7, 1, 5, 3, 6, 4]);
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));

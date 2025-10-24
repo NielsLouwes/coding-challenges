@@ -19,53 +19,25 @@ Output: ["1","2","Fizz","4","Buzz"]
 2. Then apply logic
  */
 
-const fizzBuzz = (integer = 0) => {
-  let array = [];
-  let itemNumber = 1;
-
-  for (let i = 0; i < integer; i++) {
-    array.push(itemNumber);
-    itemNumber++;
-  }
-
-  const result = array.map((item) => {
-    if (item % 3 === 0 && item % 5 === 0) {
-      return "FizzBuzz";
-    }
-    if (item % 3 === 0) {
-      return "Fizz";
-    }
-    if (item % 5 === 0) {
-      return "Buzz";
-    }
-
-    return item.toString();
-  });
-
-  return result;
-};
-
-console.log(fizzBuzz(15));
-
-// refactor
-
-const fasterFizzBuzz = (n) => {
-  let arr = [];
+const fizzBuzz = (n) => {
+  const result = [];
 
   for (let i = 1; i <= n; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      arr.push("FizzBuzz");
-    } else if (i % 3 === 0) {
-      arr.push("Fizz");
-    } else if (i % 5 === 0) {
-      arr.push("Buzz");
-    } else {
-      arr.push(i.toString());
+    if (i % 3 !== 0 && i % 5 !== 0 ) {
+      result.push(i)
+    } else if (i % 3 == 0 && i % 5 == 0) {
+      result.push('FizzBuzz')
+    } else if (i % 3 == 0) {
+      result.push('Fizz')
+    } else if (i % 5 == 0) {
+      result.push('Buzz')
     }
+
   }
+  console.log('result', result)
 
-  console.log("arr", arr);
-  return arr;
-};
+  return result;
+}
 
-fasterFizzBuzz(15);
+
+fizzBuzz(20)
