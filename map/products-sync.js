@@ -1,9 +1,10 @@
-// existing products
+// existing products = Google CSS
 const existingProducts = [
     { id: 1, name: "Shoe", price: 59 },
     { id: 2, name: "Shirt", price: 39 },
   ];
   
+// updated products = channable feed products - changes daily
 const updatedProducts = [
     { id: 1, name: "Shoe", price: 55 }, // price changed
     { id: 3, name: "Hat", price: 25 },  // new
@@ -27,7 +28,7 @@ console.log('exisingProductCollection', existingProductCollection)
 
 // items added - compare updated Items with existing items
 
-let toAdd = [];
+let toAdd = []; // { id: 3, name: "Hat", price: 25 }, NEW in updatedProducts
 
 const addNewItems = () => {
      updatedProducts.forEach((p) => {
@@ -41,6 +42,7 @@ const addNewItems = () => {
 addNewItems()
 console.log('toAdd', toAdd)
 
+// items to update
 updatedProducts.forEach((product) => {
     if (!updatedCollectionById[product.id]) {
         updatedCollectionById[product.id] = { name: product.name , price: product.price }
@@ -87,3 +89,6 @@ toAdd.forEach((p) => {
 })
 
 console.log('after Adding news items:', existingProductCollection)
+
+
+
