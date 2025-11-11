@@ -1,17 +1,18 @@
 const isGoodMatch = (numbers = []) => {
-  if (numbers.length < 1) return 
-  if (numbers.length % 2 !== 0) {
-    console.log('bad match!')
-    return [];
-  }
+   const length = numbers.length;
 
-  const finalArr = [];
+   if (length % 2 !== 0) {
+    return 'bad match'
+   }
 
-  for (let i = 0; i < numbers.length; i += 2) {
-    finalArr.push(numbers[i] + numbers[i + 1])
-  }
+   let result = [];
 
-  return finalArr;
+   for (let i  = 0; i < numbers.length - 1; i +=2){
+    result.push(numbers[i] + numbers[i + 1])
+   }
+
+ return result;
+
 }
 
-console.log(isGoodMatch([1,2,3,4,5]))
+console.log(isGoodMatch([1,2,3,4]))
